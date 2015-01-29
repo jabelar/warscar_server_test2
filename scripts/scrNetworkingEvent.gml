@@ -43,7 +43,7 @@ else if ip_addr_rx == global.ip_addr_server // local
         {
             case INPUT:
             {
-                // show_debug_message("Local player input packet received")
+                show_debug_message("Local player input packet received")
                 
                 key_up[PLAYER1] = buffer_read(rx_buff, buffer_bool)
                 key_down[PLAYER1] = buffer_read(rx_buff, buffer_bool)
@@ -77,6 +77,10 @@ else // from remote
                     global.my_ip_address = ip_addr_rx
                     // show_debug_message("My IP address = "+global.my_ip_address+", my server name = "+buffer_read(rx_buff, buffer_string))
                     break;
+                }
+                case CLIENT_ANNOUNCE:
+                {
+                    show_debug_message("There is possible client at "+ip_addr_rx)
                 }
                 default:
                 {

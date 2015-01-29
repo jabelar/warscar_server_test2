@@ -75,7 +75,7 @@ else // from remote
                 case SERVER_ANNOUNCE:
                 {
                     global.my_ip_address = ip_addr_rx
-                    show_debug_message("Received own broadcast, my IP address = "+global.my_ip_address)
+                    // show_debug_message("My IP address = "+global.my_ip_address+", my server name = "+buffer_read(rx_buff, buffer_string))
                     break;
                 }
                 default:

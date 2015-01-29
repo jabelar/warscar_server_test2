@@ -3,6 +3,11 @@ switch room
     case roomLAN:
     {
         global.server_state = BROADCASTING
+        global.status_string = "Broadcasting from "+global.ip_addr_server
+        
+        scrProcessInputNew(PLAYER1)
+        scrSendLocalInput(PLAYER1)
+        
         break;
     }
     case room0:

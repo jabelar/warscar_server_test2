@@ -7,7 +7,7 @@ var network_event_type = ds_map_find_value(async_load, "type")
 var port = ds_map_find_value(async_load, "port")
 var ip_addr_rx = ds_map_find_value(async_load, "ip")
 var rx_buff = ds_map_find_value(async_load, "buffer")
-//show_debug_message("Packet received from ip ="+string(ip_addr_rx)+", event id ="+string(socket_id)+", port ="+string(port))
+show_debug_message("Packet received from ip ="+string(ip_addr_rx)+", event id ="+string(socket_id)+", port ="+string(port))
 
 if network_event_type == network_type_connect
 {
@@ -22,7 +22,7 @@ if network_event_type == network_type_connect
     else // local connection
     {
         show_debug_message("Local network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
-        global.socket_local_client = added_socket_id
+        global.socket_local_server_side = added_socket_id
     }
 }
 else if network_event_type == network_type_disconnect
@@ -43,6 +43,8 @@ else if ip_addr_rx == global.ip_addr_server // local
         {
             case INPUT:
             {
+                show_debug_message("Local player input packet received")
+                
                 key_up[PLAYER1] = buffer_read(rx_buff, buffer_bool)
                 key_down[PLAYER1] = buffer_read(rx_buff, buffer_bool)
                 key_right[PLAYER1] = buffer_read(rx_buff, buffer_bool)

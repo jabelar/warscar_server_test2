@@ -6,6 +6,8 @@ alarm[0] = room_speed * 3
 
 global.server_state = DISCONNECTED
 
+global.my_ip_address = "127.0.0.1"
+
 show_debug_message("Running server side")
 
 // Create socket for server

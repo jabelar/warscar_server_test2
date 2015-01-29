@@ -18,6 +18,10 @@ OBJ_DESTROY = 2
 SOUND_PLAY = 3
 EFFECT_CREATE = 4
 
+// packet types to broadcast
+globalvar SERVER_ANNOUNCE;
+SERVER_ANNOUNCE = 0
+
 // packet types from client
 globalvar INPUT;
 INPUT = 0

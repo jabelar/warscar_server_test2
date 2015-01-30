@@ -38,6 +38,7 @@ if network_event_type == network_type_connect
         show_debug_message("Local network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_local_server_side = added_socket_id
         global.num_players = 0
+        global.max_num_players = 2
         show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
         if global.num_players < global.max_num_players
         {

@@ -1,6 +1,6 @@
 switch room
 {
-    case roomLAN:
+    case roomLobby:
     {
         draw_set_font(font0)
         draw_set_halign(fa_center)

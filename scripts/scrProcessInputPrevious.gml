@@ -25,12 +25,14 @@ with global.player_object[argument[0]]
     if x > room_width then x = 0
     if y < 0 then y = room_height
     if y > room_height then y = 0
+
+    if other.key_weapon[argument[0]]
+    {
+        new_instance = instance_create(x, y, objBullet)
+        new_instance.speed = 32
+        new_instance.direction = 0 // irandom(360)
+        scrSendCreateObject(BULLET, new_instance)
+    }
 }
 
-if key_weapon[argument[0]]
-{
-    new_instance = instance_create(x, y, objBullet)
-    new_instance.speed = 32
-    new_instance.direction = 0 // irandom(360)
-    scrSendCreateObject(BULLET, new_instance)
-}
+

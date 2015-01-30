@@ -97,7 +97,7 @@ else // from remote
             {
                 case INPUT:
                 {
-                    show_debug_message("Remote data packet received")
+                    // show_debug_message("Remote input packet received")
                     key_up[1] = buffer_read(rx_buff, buffer_bool)
                     key_down[1] = buffer_read(rx_buff, buffer_bool)
                     key_right[1] = buffer_read(rx_buff, buffer_bool)

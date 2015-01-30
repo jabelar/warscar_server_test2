@@ -1,6 +1,6 @@
 global.my_ip_address = "127.0.0.1"
 
-// Create socket for server
+// Create TCP socket for server
 global.socket_server = network_create_server(network_socket_tcp, 6511, 32)
 if global.socket_server < 0
 {
@@ -11,7 +11,7 @@ else
     show_debug_message("Succesfully created server socket = "+string(global.socket_server))
 }
 
-// create listener for broadcasts
+// create UDP listener for broadcasts
 global.socket_server_udp = network_create_server(network_socket_udp, 6512, 32)
 if global.socket_server_udp < 0
 {
@@ -52,7 +52,7 @@ else
 var result = network_connect(global.socket_local_client_side, global.ip_addr_server, 6511);
 if result < 0
 {
-    show_debug_message("Network connect from local client server side failed")
+    show_debug_message("Network connect from local client server side failed for socket = "+string(global.socket_local_client_side)+" and IP address = "+string(global.ip_addr_server))
 }
 
 

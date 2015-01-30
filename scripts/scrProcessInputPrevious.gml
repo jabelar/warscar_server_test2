@@ -1,5 +1,5 @@
 // argument[0] is player constant
-show_debug_message("Processing input for player "+string(argument[0])+" with instance id = "+string(global.player_object[argument[0]]))
+// show_debug_message("Processing input for player "+string(argument[0])+" with instance id = "+string(global.player_object[argument[0]]))
 
 if key_down[argument[0]]
 {
@@ -18,13 +18,12 @@ if key_left[argument[0]]
     if not instance_place(global.player_object[argument[0]].x-8, global.player_object[argument[0]].y, objObstacle) then global.player_object[argument[0]].x -= 8
 }
 
-show_debug_message("Number of objPlayer ="+string(instance_number(objPlayer)))
 with objPlayer
 {
-    if x < 0 then x = room0.room_width
-    if x > room0.room_width then x = 0
-    if y < 0 then y = room0.room_height
-    if y > room0.room_height then y = 0
+    if x < 0 then x = room_width
+    if x > room_width then x = 0
+    if y < 0 then y = room_height
+    if y > room_height then y = 0
 }
 
 if key_weapon[argument[0]]

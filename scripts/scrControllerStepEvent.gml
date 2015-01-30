@@ -20,7 +20,6 @@ switch room
         // send player position updates
         for (var i=0; i<global.num_players; i++)
         {
-            show_debug_message("Processing input for player "+string(i)+" with instance id = "+string(global.player_object[i]))
             // process previous input
             scrProcessInputPrevious(i)
             

@@ -4,7 +4,7 @@ global.my_ip_address = "127.0.0.1"
 global.socket_server = network_create_server(network_socket_tcp, 6511, 32)
 if global.socket_server < 0
 {
-    show_message("Network create for server socket failed")
+    show_debug_message("Network create for server socket failed")
 }
 else
 {
@@ -15,7 +15,7 @@ else
 global.socket_server_udp = network_create_server(network_socket_udp, 6512, 32)
 if global.socket_server_udp < 0
 {
-    show_message("Network create for broadcast listener failed")
+    show_debug_message("Network create for broadcast listener failed")
 }
 else
 {
@@ -27,7 +27,7 @@ else
 global.socket_broadcast = network_create_socket(network_socket_udp)
 if global.socket_broadcast < 0
 {
-    show_message("Network create for broadcast socket failed")
+    show_debug_message("Network create for broadcast socket failed")
 }
 else
 {

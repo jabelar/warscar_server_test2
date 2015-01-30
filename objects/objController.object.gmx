@@ -315,8 +315,11 @@ if i_d == ip_query_id
           <argument>
             <kind>1</kind>
             <string>network_destroy(global.socket_client)
-network_destroy(global.socket_local_client)
+network_destroy(global.socket_local_client_side)
+network_destroy(global.socket_local_server_side)
 network_destroy(global.socket_server)
+network_destroy(global.socket_server_udp)
+network_destroy(global.socket_broadcast)
 game_restart()
 </string>
           </argument>

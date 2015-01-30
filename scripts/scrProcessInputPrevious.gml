@@ -32,6 +32,8 @@ with global.player_object[argument[0]]
         new_instance.speed = 32
         new_instance.direction = 0 // irandom(360)
         scrSendCreateObject(BULLET, new_instance)
+        audio_play_sound_at(sndMainGun, x, y, 0, room_width*1.5, room_width*2, 1, false, 100)
+        scrSendPlaySound(MAIN_GUN, x, y)
     }
 }
 

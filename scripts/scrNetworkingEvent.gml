@@ -7,7 +7,8 @@ var network_event_type = ds_map_find_value(async_load, "type")
 var port = ds_map_find_value(async_load, "port")
 var ip_addr_rx = ds_map_find_value(async_load, "ip")
 var rx_buff = ds_map_find_value(async_load, "buffer")
-show_debug_message("Packet received from ip ="+string(ip_addr_rx)+", socket id ="+string(socket_id)+", port ="+string(port))
+
+// show_debug_message("Packet received from ip ="+string(ip_addr_rx)+", socket id ="+string(socket_id)+", port ="+string(port))
 
 if network_event_type == network_type_connect
 {
@@ -43,13 +44,13 @@ else if ip_addr_rx == global.ip_addr_server // local
         {
             case INPUT:
             {
-                show_debug_message("Local player input packet received")
+                // show_debug_message("Local player input packet received")
                 
-                key_up[PLAYER1] = buffer_read(rx_buff, buffer_bool)
-                key_down[PLAYER1] = buffer_read(rx_buff, buffer_bool)
-                key_right[PLAYER1] = buffer_read(rx_buff, buffer_bool)
-                key_left[PLAYER1] = buffer_read(rx_buff, buffer_bool)
-                key_weapon[PLAYER1] = buffer_read(rx_buff, buffer_bool)
+                key_up[0] = buffer_read(rx_buff, buffer_bool)
+                key_down[0] = buffer_read(rx_buff, buffer_bool)
+                key_right[0] = buffer_read(rx_buff, buffer_bool)
+                key_left[0] = buffer_read(rx_buff, buffer_bool)
+                key_weapon[0] = buffer_read(rx_buff, buffer_bool)
                 break;
             }
             default: // unrecognized packet type
@@ -97,12 +98,12 @@ else // from remote
                 case INPUT:
                 {
                     show_debug_message("Remote data packet received")
-                    key_up[PLAYER2] = buffer_read(rx_buff, buffer_bool)
-                    key_down[PLAYER2] = buffer_read(rx_buff, buffer_bool)
-                    key_right[PLAYER2] = buffer_read(rx_buff, buffer_bool)
-                    key_left[PLAYER2] = buffer_read(rx_buff, buffer_bool)
-                    key_weapon[PLAYER2] = buffer_read(rx_buff, buffer_bool)
-                    // show_debug_message("key_up ="+string(key_up[PLAYER2]))
+                    key_up[1] = buffer_read(rx_buff, buffer_bool)
+                    key_down[1] = buffer_read(rx_buff, buffer_bool)
+                    key_right[1] = buffer_read(rx_buff, buffer_bool)
+                    key_left[1] = buffer_read(rx_buff, buffer_bool)
+                    key_weapon[1] = buffer_read(rx_buff, buffer_bool)
+                    // show_debug_message("key_up ="+string(key_up[1]))
                     break;
                 }
                 default: // unrecognized packet type

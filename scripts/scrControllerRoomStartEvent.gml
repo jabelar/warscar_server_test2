@@ -6,18 +6,33 @@ if room == room0
     // populate obstacles
     randomize()
     var i
-    for (i=0; i<10; i+=1)
+    for (i=0; i<10; i++)
     {
-        x = irandom(room_width)
-        y = irandom(room_height)
-        new_instance = instance_create(x, y, objObstacle)
+        new_instance = instance_create(irandom(room_width), irandom(room_height), objObstacle)
         with new_instance
         {
-            while not place_free(other.x, other.y)
-            other.x = irandom(room_width)
-            other.y = irandom(room_height)
+            while not place_free(x, y)
+            x = irandom(room_width)
+            y = irandom(room_height)
         }
         // send packet to create obstacle on remote client
         scrSendCreateObject(OBSTACLE, new_instance)
     }
+    
+    // populate players
+    randomize()
+    var i
+    for (i=0; i<global.num_players; i++)
+    {
+        global.player_object[i] = instance_create(irandom(room_width), irandom(room_height), objPlayer)
+        with global.player_object[i]
+        {
+            while not place_free(x, y)
+            x = irandom(room_width)
+            y = irandom(room_height)
+        }
+        // send packet to create obstacle on remote client
+        scrSendCreateObject(PLAYER, global.player_object[i])
+    }
+
 }

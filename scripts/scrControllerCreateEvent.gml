@@ -9,7 +9,10 @@ global.server_state = DISCONNECTED
 
 scrInitializeNetworking()
 
-scrClearInput(PLAYER1)
-scrClearInput(PLAYER2)
+global.num_players = 2
 
-global.object_map = ds_map_create() // will contain list of all objects by id and type
+for (var i=0; i<global.num_players; i++)
+{
+    scrClearInput(i)
+}
+

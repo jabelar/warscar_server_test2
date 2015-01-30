@@ -5,38 +5,28 @@ switch room
         global.server_state = BROADCASTING
         global.status_string = "Broadcasting from "+global.ip_addr_server
         
-        scrProcessInputNew(PLAYER1)
-        scrSendLocalInput(PLAYER1)
-        
         break;
     }
     case room0:
     {
-        // process previous input
-        scrProcessInputPrevious(PLAYER1)
-        scrProcessInputPrevious(PLAYER2)
 
         // process new input
-        scrProcessInputNew(PLAYER1) // only player 1 because new input for other players comes through networking event
+        scrProcessInputNew(0) // only player 1 because new input for other players comes through networking event
         
         // send local input to server
-        scrSendLocalInput(PLAYER1)
+        scrSendLocalInput(0)
         
         // send position updates to remote client 
-        scrSendPlayerPositions()      
-
-        // update positions in local game
-        with player_object[PLAYER1]
+        // send player position updates
+        for (var i=0; i<global.num_players; i++)
         {
-            x = other.player_x[PLAYER1]
-            y = other.player_y[PLAYER1]
-        }
-        
-        with player_object[PLAYER2]
-        {
-            x = other.player_x[PLAYER2]
-            y = other.player_y[PLAYER2]
-        }
+            show_debug_message("Processing input for player "+string(i)+" with instance id = "+string(global.player_object[i]))
+            // process previous input
+            scrProcessInputPrevious(i)
+            
+            // update remote clients
+            scrSendObjectUpdate(global.player_object[i])
+        }     
         
         // process collisions
         scrCheckCollisions()

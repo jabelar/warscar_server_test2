@@ -1,6 +1,6 @@
 // https://www.yoyogames.com/tech_blog/11 for tutorial
 
-show_debug_message("Networking event occurred")
+// show_debug_message("Networking event occurred")
 
 var socket_id = ds_map_find_value( async_load, "id" )
 var network_event_type = ds_map_find_value(async_load, "type")

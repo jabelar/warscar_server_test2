@@ -1,6 +1,6 @@
 // https://www.yoyogames.com/tech_blog/11 for tutorial
 
-// show_debug_message("networking event occurred")
+show_debug_message("Networking event occurred")
 
 var socket_id = ds_map_find_value( async_load, "id" )
 var network_event_type = ds_map_find_value(async_load, "type")
@@ -18,12 +18,39 @@ if network_event_type == network_type_connect
         show_debug_message("Remote network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_client = added_socket_id
         global.server_state = CONNECTED
-        room_goto(room0)
+        if global.num_players < global.max_num_players
+        {
+            global.num_players++
+            show_debug_message("Assigning socket to Player "+string(global.num_players))
+            ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
+            room_goto(room0)
+        }
+        else
+        {
+            show_debug_message("Game already has enough players")
+            // TO DO
+            // Should probably put a kick plus network destroy here?
+        }
+
     }
     else // local connection
     {
         show_debug_message("Local network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_local_server_side = added_socket_id
+        global.num_players = 0
+        show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
+        if global.num_players < global.max_num_players
+        {
+            global.num_players++
+            show_debug_message("Assigning socket to Player "+string(global.num_players))
+            ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
+        }
+        else
+        {
+            show_debug_message("Game already has enough players")
+            // TO DO
+            // Should probably put a kick plus network destroy here?
+        }
     }
 }
 else if network_event_type == network_type_disconnect

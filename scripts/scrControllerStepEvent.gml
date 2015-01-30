@@ -1,6 +1,6 @@
 switch room
 {
-    case roomLAN:
+    case roomLobby:
     {
         global.server_state = BROADCASTING
         global.status_string = "Broadcasting from "+global.ip_addr_server

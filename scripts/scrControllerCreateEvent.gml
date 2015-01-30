@@ -9,10 +9,14 @@ global.server_state = DISCONNECTED
 
 scrInitializeNetworking()
 
-global.num_players = 2
+global.max_num_players = 2
+global.num_players = 0; // starts with none connected
+global.client_socket_map = ds_map_create()
 
-for (var i=0; i<global.num_players; i++)
+for (var i=0; i<global.max_num_players; i++)
 {
     scrClearInput(i)
+    ds_map_add(global.client_socket_map, i, -1) // start all clients as disconnected
 }
+
 

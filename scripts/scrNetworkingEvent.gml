@@ -75,94 +75,28 @@ else if network_event_type == network_type_disconnect
     show_debug_message("Network disconnected from IP address = "+string(ip_addr_rx)+" socket ID = "+string(socket_id))
     scrClientDisconnected(ip_addr_rx)
 }
-else if ip_addr_rx == global.ip_addr_server // local
+else // data packet received 
 {
-    if is_undefined(rx_buff)
+    if ip_addr_rx == global.ip_addr_server // local
     {
-        show_debug_message("Packet contents undefined")
-    }
-    else
-    {
-        packet_type = buffer_read(rx_buff, buffer_u8)
-        switch packet_type
+        if is_undefined(rx_buff)
         {
-            case INPUT:
-            {
-                // show_debug_message("Local player input packet received")
-                
-                key_up[0] = buffer_read(rx_buff, buffer_bool)
-                key_down[0] = buffer_read(rx_buff, buffer_bool)
-                key_right[0] = buffer_read(rx_buff, buffer_bool)
-                key_left[0] = buffer_read(rx_buff, buffer_bool)
-                key_weapon[0] = buffer_read(rx_buff, buffer_bool)
-                break;
-            }
-            default: // unrecognized packet type
-            {
-                show_debug_message("Unrecognized packet type")
-            }
-        }
-    }
-}
-else // from remote
-{
-    if is_undefined(rx_buff)
-    {
-        show_debug_message("Packet contents undefined")
-    }
-    else
-    {
-        if socket_id == global.socket_server_udp
-        {
-            packet_type = buffer_read(rx_buff, buffer_u8)
-            switch packet_type
-            {
-                case SERVER_ANNOUNCE:
-                {
-                    global.my_ip_address = ip_addr_rx
-                    // show_debug_message("My IP address = "+global.my_ip_address+", my server name = "+buffer_read(rx_buff, buffer_string))
-                    break;
-                }
-                case CLIENT_ANNOUNCE:
-                {
-                    show_debug_message("There is  client at "+ip_addr_rx)
-                    
-                    // clear watchdog timer for client connection
-                    var client_socket;
-                    client_socket = ds_map_find_value(global.ip_socket_map, ip_addr_rx)
-                    global.client_connected[ds_map_find_value(global.socket_client_map, client_socket)] = true
-                    break;
-                }
-                default:
-                {
-                    show_debug_message("Unrecognized broadcast packet received")
-                    break;
-                }
-            }
+            show_debug_message("Packet contents undefined")
         }
         else
         {
             packet_type = buffer_read(rx_buff, buffer_u8)
-            var player_id ;
-            for (var i=0; i<global.max_num_players; i++)
-            {
-                if ds_map_find_value(global.client_socket_map, i) == socket_id
-                {
-                    player_id = i
-                    // show_debug_message("Packet from player = "+string(player_id+1))
-                }
-            }
             switch packet_type
             {
                 case INPUT:
                 {
-                    // show_debug_message("Remote input packet received")
-                    key_up[player_id] = buffer_read(rx_buff, buffer_bool)
-                    key_down[player_id] = buffer_read(rx_buff, buffer_bool)
-                    key_right[player_id] = buffer_read(rx_buff, buffer_bool)
-                    key_left[player_id] = buffer_read(rx_buff, buffer_bool)
-                    key_weapon[player_id] = buffer_read(rx_buff, buffer_bool)
-                    // show_debug_message("key_up ="+string(key_up[1]))
+                    // show_debug_message("Local player input packet received")
+                    
+                    key_up[0] = buffer_read(rx_buff, buffer_bool)
+                    key_down[0] = buffer_read(rx_buff, buffer_bool)
+                    key_right[0] = buffer_read(rx_buff, buffer_bool)
+                    key_left[0] = buffer_read(rx_buff, buffer_bool)
+                    key_weapon[0] = buffer_read(rx_buff, buffer_bool)
                     break;
                 }
                 default: // unrecognized packet type
@@ -172,4 +106,75 @@ else // from remote
             }
         }
     }
+    else // from remote
+    {
+        if is_undefined(rx_buff)
+        {
+            show_debug_message("Packet contents undefined")
+        }
+        else
+        {
+            if socket_id == global.socket_server_udp
+            {
+                packet_type = buffer_read(rx_buff, buffer_u8)
+                switch packet_type
+                {
+                    case SERVER_ANNOUNCE:
+                    {
+                        global.my_ip_address = ip_addr_rx
+                        // show_debug_message("My IP address = "+global.my_ip_address+", my server name = "+buffer_read(rx_buff, buffer_string))
+                        break;
+                    }
+                    case CLIENT_ANNOUNCE:
+                    {
+                        show_debug_message("There is  client at "+ip_addr_rx)
+                        
+                        // clear watchdog timer for client connection
+                        var client_socket;
+                        client_socket = ds_map_find_value(global.ip_socket_map, ip_addr_rx)
+                        global.client_connected[ds_map_find_value(global.socket_client_map, client_socket)] = true
+                        break;
+                    }
+                    default:
+                    {
+                        show_debug_message("Unrecognized broadcast packet received")
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                packet_type = buffer_read(rx_buff, buffer_u8)
+                var player_id ;
+                for (var i=0; i<global.max_num_players; i++)
+                {
+                    if ds_map_find_value(global.client_socket_map, i) == socket_id
+                    {
+                        player_id = i
+                        show_debug_message("Packet from player = "+string(player_id+1))
+                    }
+                }
+                switch packet_type
+                {
+                    case INPUT:
+                    {
+                        // show_debug_message("Remote input packet received")
+                        key_up[player_id] = buffer_read(rx_buff, buffer_bool)
+                        key_down[player_id] = buffer_read(rx_buff, buffer_bool)
+                        key_right[player_id] = buffer_read(rx_buff, buffer_bool)
+                        key_left[player_id] = buffer_read(rx_buff, buffer_bool)
+                        key_weapon[player_id] = buffer_read(rx_buff, buffer_bool)
+                        // show_debug_message("key_up ="+string(key_up[1]))
+                        break;
+                    }
+                    default: // unrecognized packet type
+                    {
+                        show_debug_message("Unrecognized packet type")
+                    }
+                }
+            }
+        }
+    }
 }
+
+show_debug_message("Finished networking event")

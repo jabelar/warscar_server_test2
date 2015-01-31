@@ -11,4 +11,3 @@ buffer_write(global.tx_buff_server, buffer_u32, argument[2])
 buffer_write(global.tx_buff_server, buffer_u32, argument[3])
 
 scrSendPacketToAll(global.tx_buff_server)
-

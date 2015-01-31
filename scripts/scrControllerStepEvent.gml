@@ -1,3 +1,5 @@
+show_debug_message("Starting step event")
+
 switch room
 {
     case roomLobby:
@@ -35,5 +37,5 @@ switch room
         
         break;
     }
-    
 }
+

@@ -19,11 +19,13 @@ if client_socket > 0 // for some reason there can be disconnect from socket 0 (I
     
     if global.player_object[client_id] >= 0 and instance_exists(global.player_object[client_id])
     {
-        // destroy the player object remotely and locally
+        // destroy the player object remotely
         scrDestroyObject(global.player_object[client_id])
+        // destroy the player object locally
+        show_debug_message("Destroying local object with id = "+string(global.player_object[client_id]))
         with global.player_object[client_id]
         {
-            instance_destroy()
+            // instance_destroy()
         }
         global.player_object[client_id]=-1
     }
@@ -33,3 +35,4 @@ else
 {
     show_debug_message("Received IP address not associated to a socket")
 }
+scrGetNumPlayers() // for debug output

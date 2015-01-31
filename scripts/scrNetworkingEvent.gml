@@ -24,13 +24,23 @@ if network_event_type == network_type_connect
         var open_slot = scrNextOpenPlayerID();
         if open_slot > 0 // let client connect
         {
-            // global.num_players++
             global.player_object[open_slot]=0 // not valid id but helps indicate connection in non game room like 
             show_debug_message("Assigning socket to Player "+string(open_slot+1)+" so number players = "+string(scrGetNumPlayers()))
             ds_map_replace(global.client_socket_map, open_slot, added_socket_id)
             ds_map_replace(global.socket_client_map, added_socket_id, open_slot)
             // show_debug_message("Socket map size now = "+string(ds_map_size(global.client_socket_map)))
-            // if room != roomLobby then scrSendCreateAll()
+            if room != roomLobby // already in game
+            {
+                global.player_object[open_slot] = instance_create(irandom(room_width), irandom(room_height), objPlayer)
+                with global.player_object[open_slot] // find free random location
+                {
+                    while not place_free(x, y)
+                    x = irandom(room_width)
+                    y = irandom(room_height)
+                }
+                scrSendCreateAll()
+            }
+            scrGetNumPlayers() // just want to see debug output
         }
         else
         {
@@ -39,11 +49,14 @@ if network_event_type == network_type_connect
             // TO DO
             // Should probably put a kick plus network destroy here?
         }
-        if scrGetNumPlayers() >= global.max_num_players // all players here so start
+        if room == roomLobby
         {
-                    if room != room0 then room_goto(room0)
+            if scrGetNumPlayers() >= global.max_num_players// all players here so start
+            {
+                        if room != room0 then room_goto(room0)
+            }
         }
-
+ 
     }
     else // local connection
     {
@@ -136,7 +149,7 @@ else // from remote
                 if ds_map_find_value(global.client_socket_map, i) == socket_id
                 {
                     player_id = i
-                    show_debug_message("Packet from player = "+string(player_id+1))
+                    // show_debug_message("Packet from player = "+string(player_id+1))
                 }
             }
             switch packet_type

@@ -38,15 +38,12 @@ else
 global.ip_addr_server = "127.0.0.1" // on server the server is local
 
 global.socket_local_client_side = network_create_socket(network_socket_tcp)
-if global.socket_local_client_side < 0
+while global.socket_local_client_side < 0
 {
     show_debug_message("Network create for local client side socket failed")
-    game_restart()
 }
-else
-{
-    show_debug_message("Successfully created local client side socket ="+string(global.socket_local_client_side))
-}
+show_debug_message("Successfully created local client side socket ="+string(global.socket_local_client_side))
+
 
 // connect socket from local client to server
 // socket will be assigned in the network event
@@ -55,6 +52,7 @@ var result = network_connect(global.socket_local_client_side, global.ip_addr_ser
 if result < 0
 {
     show_debug_message("Network connect from local client server side failed for socket = "+string(global.socket_local_client_side)+" and IP address = "+string(global.ip_addr_server))
+    game_restart()
 }
 
 // create network buffer for sent messages

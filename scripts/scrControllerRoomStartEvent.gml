@@ -8,7 +8,7 @@ if room == room0
     var i
     for (i=0; i<10; i++)
     {
-        new_instance = instance_create(irandom(room_width), irandom(room_height), objObstacle)
+        var new_instance = instance_create(irandom(room_width), irandom(room_height), objObstacle);
         with new_instance
         {
             while not place_free(x, y)

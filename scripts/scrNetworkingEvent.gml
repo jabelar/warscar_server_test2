@@ -18,12 +18,12 @@ if network_event_type == network_type_connect
         show_debug_message("Remote network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_client = added_socket_id
         global.server_state = CONNECTED
+        show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
         if global.num_players < global.max_num_players
         {
             global.num_players++
             show_debug_message("Assigning socket to Player "+string(global.num_players))
             ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
-            room_goto(room0)
         }
         else
         {
@@ -31,15 +31,16 @@ if network_event_type == network_type_connect
             // TO DO
             // Should probably put a kick plus network destroy here?
         }
+        if global.num_players >= global.max_num_players // all players here so start
+        {
+                    if room != room0 then room_goto(room0)
+        }
 
     }
     else // local connection
     {
         show_debug_message("Local network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_local_server_side = added_socket_id
-        global.num_players = 0
-        global.max_num_players = 2
-        show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
         if global.num_players < global.max_num_players
         {
             global.num_players++

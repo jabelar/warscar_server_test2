@@ -8,7 +8,7 @@ alarm[0] = room_speed * 3
 global.server_state = DISCONNECTED
 
 
-global.max_num_players = 2
+global.max_num_players = 3
 global.num_players = 0; // starts with none connected
 global.client_socket_map = ds_map_create()
 

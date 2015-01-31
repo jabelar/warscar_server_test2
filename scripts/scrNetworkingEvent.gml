@@ -121,16 +121,25 @@ else // from remote
         else
         {
             packet_type = buffer_read(rx_buff, buffer_u8)
+            var player_id ;
+            for (var i=0; i<global.max_num_players; i++)
+            {
+                if ds_map_find_value(global.client_socket_map, i) == socket_id
+                {
+                    player_id = i
+                    show_debug_message("Packet from player = "+string(player_id+1))
+                }
+            }
             switch packet_type
             {
                 case INPUT:
                 {
                     // show_debug_message("Remote input packet received")
-                    key_up[1] = buffer_read(rx_buff, buffer_bool)
-                    key_down[1] = buffer_read(rx_buff, buffer_bool)
-                    key_right[1] = buffer_read(rx_buff, buffer_bool)
-                    key_left[1] = buffer_read(rx_buff, buffer_bool)
-                    key_weapon[1] = buffer_read(rx_buff, buffer_bool)
+                    key_up[player_id] = buffer_read(rx_buff, buffer_bool)
+                    key_down[player_id] = buffer_read(rx_buff, buffer_bool)
+                    key_right[player_id] = buffer_read(rx_buff, buffer_bool)
+                    key_left[player_id] = buffer_read(rx_buff, buffer_bool)
+                    key_weapon[player_id] = buffer_read(rx_buff, buffer_bool)
                     // show_debug_message("key_up ="+string(key_up[1]))
                     break;
                 }

@@ -1,4 +1,4 @@
-show_debug_message("Starting step event")
+// show_debug_message("Starting step event")
 
 switch room
 {

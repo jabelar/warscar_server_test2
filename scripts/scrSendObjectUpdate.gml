@@ -1,4 +1,5 @@
-// argument[0] is the object id
+// argument[0] is the instance id
+ 
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)
 buffer_write(global.tx_buff_server, buffer_u8, OBJ_UPDATE) // send object positions
 buffer_write(global.tx_buff_server, buffer_u32, argument[0].id)
@@ -12,4 +13,5 @@ buffer_write(global.tx_buff_server, buffer_u8, argument[0].image_alpha)
 
 scrSendPacketToAll(global.tx_buff_server)
 
-show_debug_message("Sending packet to update instance "+string(argument[0]))
+// show_debug_message("Sending packet to update instance "+string(argument[0]))
+

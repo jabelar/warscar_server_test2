@@ -13,4 +13,3 @@ buffer_write(global.tx_buff_server, buffer_u8, argument[0].image_alpha)
 scrSendPacketToAll(global.tx_buff_server)
 
 // show_debug_message("Sending packet to update instance "+string(argument[0]))
-

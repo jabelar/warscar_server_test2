@@ -24,9 +24,9 @@
     <script>scripts\scrProcessInputPrevious.gml</script>
     <script>scripts\scrCheckCollisions.gml</script>
     <script>scripts\scrProcessInputNew.gml</script>
-    <script>scripts\scrAlarm0Event.gml</script>
     <script>scripts\scrControllerDrawEvent.gml</script>
     <script>scripts\scrControllerRoomStartEvent.gml</script>
+    <script>scripts\scrAlarm0Event.gml</script>
     <script>scripts\scrAlarm1Event.gml</script>
     <scripts name="Networking">
       <script>scripts\scrInitializeNetworking.gml</script>

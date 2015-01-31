@@ -20,12 +20,15 @@ switch room
         // send player position updates
         for (var i=0; i<global.num_players; i++)
         {
-            // process previous input
-            scrProcessInputPrevious(i)
-            
-            // update remote clients
-            scrSendObjectUpdate(global.player_object[i])
-        }     
+            if global.player_object[i] >= 0 
+            {
+                // process previous input
+                scrProcessInputPrevious(i)
+                
+                // update remote clients
+                scrSendObjectUpdate(global.player_object[i])
+            } 
+        }    
         
         // process collisions
         scrCheckCollisions()

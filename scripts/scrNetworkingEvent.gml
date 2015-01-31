@@ -27,7 +27,7 @@ if network_event_type == network_type_connect
             show_debug_message("Assigning socket to Player "+string(global.num_players))
             ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
             ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
-            if room != roomLobby then scrSendCreateAll()
+            // if room != roomLobby then scrSendCreateAll()
         }
         else
         {

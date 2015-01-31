@@ -41,6 +41,7 @@ global.socket_local_client_side = network_create_socket(network_socket_tcp)
 if global.socket_local_client_side < 0
 {
     show_debug_message("Network create for local client side socket failed")
+    game_restart()
 }
 else
 {
@@ -49,6 +50,7 @@ else
 
 // connect socket from local client to server
 // socket will be assigned in the network event
+global.socket_local_server_side = -1
 var result = network_connect(global.socket_local_client_side, global.ip_addr_server, 6511);
 if result < 0
 {

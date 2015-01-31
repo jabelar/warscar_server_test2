@@ -12,6 +12,6 @@ buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_index)
 buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_speed)
 buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_alpha)
 
+show_debug_message("Sending create object packet to all clients")
 scrSendPacketToAll(global.tx_buff_server)
-
 

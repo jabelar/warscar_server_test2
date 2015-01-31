@@ -128,7 +128,7 @@ else // from remote
                 if ds_map_find_value(global.client_socket_map, i) == socket_id
                 {
                     player_id = i
-                    show_debug_message("Packet from player = "+string(player_id+1))
+                    // show_debug_message("Packet from player = "+string(player_id+1))
                 }
             }
             switch packet_type

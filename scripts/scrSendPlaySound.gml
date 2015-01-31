@@ -7,4 +7,6 @@ buffer_write(global.tx_buff_server, buffer_u8, SOUND_PLAY)
 buffer_write(global.tx_buff_server, buffer_u8, argument[0])
 buffer_write(global.tx_buff_server, buffer_u32, argument[1])
 buffer_write(global.tx_buff_server, buffer_u32, argument[2])
-network_send_packet( global.socket_client, global.tx_buff_server, buffer_tell(global.tx_buff_server) )
+
+scrSendPacketToAll(global.tx_buff_server)
+

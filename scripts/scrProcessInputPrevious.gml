@@ -37,4 +37,3 @@ with global.player_object[argument[0]]
     }
 }
 
-

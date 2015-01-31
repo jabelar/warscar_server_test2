@@ -35,6 +35,7 @@
     <script>scripts\scrSendPlaySound.gml</script>
     <script>scripts\scrControllerRoomStartEvent.gml</script>
     <script>scripts\scrInitializeNetworking.gml</script>
+    <script>scripts\scrSendPacketToAll.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

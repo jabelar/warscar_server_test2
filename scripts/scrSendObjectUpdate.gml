@@ -9,8 +9,8 @@ buffer_write(global.tx_buff_server, buffer_s32, argument[0].direction)
 buffer_write(global.tx_buff_server, buffer_u8, argument[0].image_index)
 buffer_write(global.tx_buff_server, buffer_u8, argument[0].image_speed)
 buffer_write(global.tx_buff_server, buffer_u8, argument[0].image_alpha)
-network_send_packet( global.socket_client, global.tx_buff_server, buffer_tell(global.tx_buff_server) )
+
+scrSendPacketToAll(global.tx_buff_server)
 
 // show_debug_message("Sending packet to update instance "+string(argument[0]))
-
 

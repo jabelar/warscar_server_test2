@@ -11,6 +11,7 @@ buffer_write(global.tx_buff_server, buffer_s32, argument[1].direction)
 buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_index)
 buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_speed)
 buffer_write(global.tx_buff_server, buffer_u8, argument[1].image_alpha)
-network_send_packet( global.socket_client, global.tx_buff_server, buffer_tell(global.tx_buff_server) )
-show_debug_message("Sending packet to create instance "+string(argument[1])+" of object type = "+string(argument[0]))
+
+scrSendPacketToAll(global.tx_buff_server)
+
 

@@ -27,7 +27,7 @@ if client_socket > 0 // for some reason there can be disconnect from socket 0 (I
         }
         global.player_object[client_id]=-1
     }
-    global.num_players--
+    // global.num_players--
 }
 else
 {

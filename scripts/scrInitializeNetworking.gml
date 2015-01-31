@@ -57,17 +57,6 @@ if result < 0
     show_debug_message("Network connect from local client server side failed for socket = "+string(global.socket_local_client_side)+" and IP address = "+string(global.ip_addr_server))
 }
 
-
-global.socket_client = network_create_socket(network_socket_tcp)
-if global.socket_client < 0
-{
-    show_debug_message("Network create for remote client socket failed")
-}
-else
-{
-    show_debug_message("Creating remote client socket ="+string(global.socket_client))
-}
-
 // create network buffer for sent messages
 show_debug_message("Creating transmit buffer")
 global.tx_buff_server = buffer_create( 256, buffer_grow, 1)

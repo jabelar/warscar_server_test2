@@ -18,7 +18,7 @@ switch room
         
         // send position updates to remote client 
         // send player position updates
-        for (var i=0; i<global.num_players; i++)
+        for (var i=0; i<global.max_num_players; i++)
         {
             if global.player_object[i] >= 0 
             {

@@ -18,25 +18,28 @@ if network_event_type == network_type_connect
     if ip_addr_rx != global.ip_addr_server // remote connection
     {
         show_debug_message("Remote network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
-        global.socket_client = added_socket_id
         global.server_state = CONNECTED
-        show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
-        if global.num_players < global.max_num_players // let client connect
+        show_debug_message("Trying to connect player")
+        // check if there is slot open for player
+        var open_slot = scrNextOpenPlayerID();
+        if open_slot > 0 // let client connect
         {
-            global.num_players++
-            show_debug_message("Assigning socket to Player "+string(global.num_players))
-            ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
-            ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
+            // global.num_players++
+            global.player_object[open_slot]=0 // not valid id but helps indicate connection in non game room like 
+            show_debug_message("Assigning socket to Player "+string(open_slot+1)+" so number players = "+string(scrGetNumPlayers()))
+            ds_map_replace(global.client_socket_map, open_slot, added_socket_id)
+            ds_map_replace(global.socket_client_map, added_socket_id, open_slot)
+            // show_debug_message("Socket map size now = "+string(ds_map_size(global.client_socket_map)))
             // if room != roomLobby then scrSendCreateAll()
         }
         else
         {
             show_debug_message("Game already has enough players")
-            scrSendKickToSocket(added_socket_id)
+            // scrSendKickToSocket(added_socket_id)
             // TO DO
             // Should probably put a kick plus network destroy here?
         }
-        if global.num_players >= global.max_num_players // all players here so start
+        if scrGetNumPlayers() >= global.max_num_players // all players here so start
         {
                     if room != room0 then room_goto(room0)
         }
@@ -46,19 +49,12 @@ if network_event_type == network_type_connect
     {
         show_debug_message("Local network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
         global.socket_local_server_side = added_socket_id
-        if global.num_players < global.max_num_players
-        {
-            global.num_players++
-            show_debug_message("Assigning socket to Player "+string(global.num_players))
-            ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
-            ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
-        }
-        else
-        {
-            show_debug_message("Game already has enough players")
-            // TO DO
-            // Should probably put a kick plus network destroy here?
-        }
+        var open_slot = scrNextOpenPlayerID();
+        global.player_object[open_slot]=0 // not valid id but helps indicate connection in non game room like 
+        show_debug_message("Assigning socket to Player "+string(open_slot+1)+" so number players = "+string(scrGetNumPlayers()))
+        ds_map_replace(global.client_socket_map, open_slot, added_socket_id)
+        ds_map_replace(global.socket_client_map, added_socket_id, open_slot)
+        // show_debug_message("Socket map size now = "+string(ds_map_size(global.client_socket_map)))
     }
 }
 else if network_event_type == network_type_disconnect
@@ -140,7 +136,7 @@ else // from remote
                 if ds_map_find_value(global.client_socket_map, i) == socket_id
                 {
                     player_id = i
-                    // show_debug_message("Packet from player = "+string(player_id+1))
+                    show_debug_message("Packet from player = "+string(player_id+1))
                 }
             }
             switch packet_type

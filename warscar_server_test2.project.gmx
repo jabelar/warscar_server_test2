@@ -17,6 +17,8 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scrNextOpenPlayerID.gml</script>
+    <script>scripts\scrGetNumPlayers.gml</script>
     <script>scripts\scrConstants.gml</script>
     <script>scripts\scrControllerCreateEvent.gml</script>
     <script>scripts\scrControllerStepEvent.gml</script>
@@ -27,7 +29,6 @@
     <script>scripts\scrControllerDrawEvent.gml</script>
     <script>scripts\scrControllerRoomStartEvent.gml</script>
     <script>scripts\scrAlarm0Event.gml</script>
-    <script>scripts\scrAlarm1Event.gml</script>
     <scripts name="Networking">
       <script>scripts\scrInitializeNetworking.gml</script>
       <script>scripts\scrNetworkingEvent.gml</script>

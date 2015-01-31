@@ -1,3 +1,4 @@
+///scrSendPlaySound(tx_buff)
 // argument0 is sound type constant
 // argument1 is sound x position
 // argument2 is sound y position
@@ -9,4 +10,3 @@ buffer_write(global.tx_buff_server, buffer_u32, argument[1])
 buffer_write(global.tx_buff_server, buffer_u32, argument[2])
 
 scrSendPacketToAll(global.tx_buff_server)
-

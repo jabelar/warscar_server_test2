@@ -13,6 +13,8 @@ var rx_buff = ds_map_find_value(async_load, "buffer")
 if network_event_type == network_type_connect
 {
     added_socket_id = ds_map_find_value(async_load, "socket")
+    ds_map_replace(global.socket_ip_map, added_socket_id, ip_addr_rx)
+    ds_map_replace(global.ip_socket_map, ip_addr_rx, added_socket_id)
     if ip_addr_rx != global.ip_addr_server // remote connection
     {
         show_debug_message("Remote network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
@@ -24,10 +26,12 @@ if network_event_type == network_type_connect
             global.num_players++
             show_debug_message("Assigning socket to Player "+string(global.num_players))
             ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
+            ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
         }
         else
         {
             show_debug_message("Game already has enough players")
+            scrSendKickToSocket(added_socket_id)
             // TO DO
             // Should probably put a kick plus network destroy here?
         }
@@ -46,6 +50,7 @@ if network_event_type == network_type_connect
             global.num_players++
             show_debug_message("Assigning socket to Player "+string(global.num_players))
             ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
+            ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
         }
         else
         {
@@ -57,8 +62,8 @@ if network_event_type == network_type_connect
 }
 else if network_event_type == network_type_disconnect
 {
-    show_debug_message("Network disconnected")
-    global.server_state = DISCONNECTED
+    show_debug_message("Network disconnected from IP address = "+string(ip_addr_rx)+" socket ID = "+string(socket_id))
+    scrClientDisconnected(ip_addr_rx)
 }
 else if ip_addr_rx == global.ip_addr_server // local
 {
@@ -110,7 +115,12 @@ else // from remote
                 }
                 case CLIENT_ANNOUNCE:
                 {
-                    show_debug_message("There is possible client at "+ip_addr_rx)
+                    show_debug_message("There is  client at "+ip_addr_rx)
+                    
+                    // clear watchdog timer for client connection
+                    var client_socket;
+                    client_socket = ds_map_find_value(global.ip_socket_map, ip_addr_rx)
+                    global.client_connected[ds_map_find_value(global.socket_client_map, client_socket)] = true
                 }
                 default:
                 {

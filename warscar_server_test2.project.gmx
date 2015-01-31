@@ -22,20 +22,29 @@
     <script>scripts\scrControllerStepEvent.gml</script>
     <script>scripts\scrClearInput.gml</script>
     <script>scripts\scrProcessInputPrevious.gml</script>
-    <script>scripts\scrSendLocalInput.gml</script>
-    <script>scripts\scrSendObjectUpdate.gml</script>
     <script>scripts\scrCheckCollisions.gml</script>
     <script>scripts\scrProcessInputNew.gml</script>
-    <script>scripts\scrNetworkingEvent.gml</script>
     <script>scripts\scrAlarm0Event.gml</script>
     <script>scripts\scrControllerDrawEvent.gml</script>
-    <script>scripts\scrDestroyObject.gml</script>
-    <script>scripts\scrSendCreateObject.gml</script>
-    <script>scripts\scrSendCreateEffect.gml</script>
-    <script>scripts\scrSendPlaySound.gml</script>
     <script>scripts\scrControllerRoomStartEvent.gml</script>
-    <script>scripts\scrInitializeNetworking.gml</script>
-    <script>scripts\scrSendPacketToAll.gml</script>
+    <script>scripts\scrAlarm1Event.gml</script>
+    <scripts name="Networking">
+      <script>scripts\scrInitializeNetworking.gml</script>
+      <script>scripts\scrNetworkingEvent.gml</script>
+      <scripts name="Transmit Packets">
+        <script>scripts\scrSendPacketToSocket.gml</script>
+        <script>scripts\scrSendPacketToPlayer.gml</script>
+        <script>scripts\scrSendPacketToAll.gml</script>
+        <script>scripts\scrSendPlaySound.gml</script>
+        <script>scripts\scrSendCreateEffect.gml</script>
+        <script>scripts\scrSendCreateObject.gml</script>
+        <script>scripts\scrSendKickToSocket.gml</script>
+        <script>scripts\scrSendObjectUpdate.gml</script>
+        <script>scripts\scrSendLocalInput.gml</script>
+        <script>scripts\scrDestroyObject.gml</script>
+      </scripts>
+      <script>scripts\scrClientDisconnected.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

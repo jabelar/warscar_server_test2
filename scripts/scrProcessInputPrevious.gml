@@ -36,4 +36,3 @@ with global.player_object[argument[0]]
         scrSendPlaySound(MAIN_GUN, x, y)
     }
 }
-

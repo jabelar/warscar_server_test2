@@ -1,3 +1,4 @@
+///scrSendPacketToAll(tx_buff)
 // argument[0[ is transmit buffer
 var socket_client;
 

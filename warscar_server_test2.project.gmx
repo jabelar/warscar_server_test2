@@ -42,9 +42,11 @@
         <script>scripts\scrSendObjectUpdate.gml</script>
         <script>scripts\scrSendLocalInput.gml</script>
         <script>scripts\scrDestroyObject.gml</script>
+        <script>scripts\scrSendCreateAll.gml</script>
       </scripts>
       <script>scripts\scrClientDisconnected.gml</script>
     </scripts>
+    <script>scripts\scrControllerBackspace.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

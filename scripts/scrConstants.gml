@@ -28,7 +28,7 @@ globalvar INPUT;
 INPUT = 0
 
 // object types
-globalvar OBSTACLE, FLAG, BULLET;
+globalvar OBSTACLE, FLAG, BULLET, PLAYER;
 OBSTACLE = 0
 FLAG = 1
 BULLET = 2

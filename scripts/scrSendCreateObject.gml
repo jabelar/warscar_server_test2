@@ -1,3 +1,4 @@
+/// scrSendCreateObject(obj_type, instance_id)
 // argument[0] is object_type constant
 // argument[1] is instance of local object
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)

@@ -21,12 +21,13 @@ if network_event_type == network_type_connect
         global.socket_client = added_socket_id
         global.server_state = CONNECTED
         show_debug_message("Players before connect = "+string(global.num_players)+" and max num players = "+string(global.max_num_players))
-        if global.num_players < global.max_num_players
+        if global.num_players < global.max_num_players // let client connect
         {
             global.num_players++
             show_debug_message("Assigning socket to Player "+string(global.num_players))
             ds_map_replace(global.client_socket_map, global.num_players-1, added_socket_id)
             ds_map_replace(global.socket_client_map, added_socket_id, global.num_players-1)
+            if room != roomLobby then scrSendCreateAll()
         }
         else
         {
@@ -121,6 +122,7 @@ else // from remote
                     var client_socket;
                     client_socket = ds_map_find_value(global.ip_socket_map, ip_addr_rx)
                     global.client_connected[ds_map_find_value(global.socket_client_map, client_socket)] = true
+                    break;
                 }
                 default:
                 {

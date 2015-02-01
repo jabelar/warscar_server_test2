@@ -7,20 +7,7 @@ with objBullet
     {
         show_debug_message("Bullet collision with player")
         scrIncrementScore(scrGetPlayerFromInstance(fired_by_id), 1)
-        effect_create_above(ef_explosion, x, y, 2, c_red)
-        scrSendCreateEffect(ef_explosion, x, y, 2, c_red)
-        with collision_id
-        {
-            x = irandom(room_width)
-            y = irandom(room_height)
-            while not place_free(x, y)
-            {
-                x = irandom(room_width)
-                y = irandom(room_height)
-            }
-        }
-        // send packet to create obstacle on remote client
-        scrSendObjectUpdate(collision_id)
+        scrDecrementHealth(scrGetPlayerFromInstance(collision_id), 25)
         scrDestroyObject(self.id)
     }
     

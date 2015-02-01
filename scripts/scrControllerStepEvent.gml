@@ -47,6 +47,34 @@ switch room
         // process collisions
         scrCheckCollisions()
         
+        // check if any player is dead
+        for (var i=0; i<global.max_num_players; i++)
+        {
+            if global.player_object[i] >=0
+            {
+                if global.player_health[i] <= 0 // player died
+                {
+                    with global.player_object[i]
+                    {
+                        effect_create_above(ef_explosion, x, y, 2, c_red)
+                        scrSendCreateEffect(ef_explosion, x, y, 2, c_red)
+                        x = irandom(room_width)
+                        y = irandom(room_height)
+                        while not place_free(x, y)
+                        {
+                            x = irandom(room_width)
+                            y = irandom(room_height)
+                        }
+                    }
+                    // restore health
+                    global.player_health[i] = 100
+                    
+                    // send packet to move player on remote client
+                    scrSendObjectUpdate(global.player_object[i])
+                }
+            }
+        }
+       
         // destroy bullets that go outside the room
         with objBullet
         {

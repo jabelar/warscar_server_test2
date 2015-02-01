@@ -1,13 +1,20 @@
 /// scrSendPacketToPlayer(tx_buff, player_id)
-// argument[0[ is transmit buffer
-// argument[1] is player index (0 is Player1, etc.)
-if global.player_object[argument[1]] >= 0
+var tx_buff = argument[0];
+var player_id = argument[1];
+
+if global.player_object[player_id] >= 0
 {
-    var socket_client;
-    
-    socket_client = ds_map_find_value(global.client_socket_map, argument[1])
-    scrSendPacketToSocket(argument[0], socket_client)
-    // show_debug_message("Sending packet to player "+string(argument[1]+1))
+    var socket_id = ds_map_find_value(global.client_socket_map, player_id);
+    if not is_undefined(socket_id)
+    {
+        scrSendPacketToSocket(tx_buff, socket_id)
+        // show_debug_message("Sending packet to player "+string(player_id+1))
+    }
+    else
+    {
+        show_debug_message("The client socket map is undefined for socket = "+string(socket_id))
+        scrShowMapContents(global.client_socket_map)
+    }
 }
 else
 {

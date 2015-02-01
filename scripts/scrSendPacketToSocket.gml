@@ -1,9 +1,10 @@
 /// scrSendPacketToPlayer(tx_buff, socket_id)
-// argument[0] is transmit buffer
-// argument[1] is socket id
-if argument[1] >= 0
+var tx_buff = argument[0];
+var socket_id = argument[1];
+
+if socket_id >= 0
 {
-    network_send_packet(argument[1], argument[0], buffer_tell(argument[0])) 
+    network_send_packet(socket_id, tx_buff, buffer_tell(tx_buff)) 
+    // show_debug_message("Sending packet to socket "+string(argument[1]+1))
 }
-// show_debug_message("Sending packet to socket "+string(argument[1]+1))
 

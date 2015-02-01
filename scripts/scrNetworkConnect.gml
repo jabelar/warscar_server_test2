@@ -14,7 +14,7 @@ global.server_state = CONNECTED
 show_debug_message("Trying to connect player")
 // check if there is slot open for player
 var open_slot = scrNextOpenPlayerID();
-scrGetNumPlayers() // for debug output
+scrShowPlayerArray() // for debug output
 if open_slot >= 0 // let client connect
 {
     scrConnectClient(open_slot, added_socket_id)

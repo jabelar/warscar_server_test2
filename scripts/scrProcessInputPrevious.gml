@@ -26,12 +26,12 @@ with global.player_object[player_id]
     }
     if other.key_right[player_id]
     {
-        direction -= 10
+        direction -= 5
         image_angle = direction
     }
     if other.key_left[player_id]
     {
-        direction += 10
+        direction += 5
         image_angle = direction
     }
 
@@ -46,6 +46,7 @@ with global.player_object[player_id]
         new_instance.speed = 32
         new_instance.direction = direction // irandom(360)
         new_instance.image_angle = new_instance.image_angle
+        new_instance.fired_by_id = id
         show_debug_message("Creating bullet at x = "+string(new_instance.x)+" y = "+string(new_instance.y)+" speed = "+string(new_instance.speed)+" direction = "+string(new_instance.direction))
         scrSendCreateObject(BULLET, new_instance)
         audio_play_sound_at(sndMainGun, x, y, 0, room_width*1.5, room_width*2, 1, false, 100)

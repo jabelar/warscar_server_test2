@@ -12,8 +12,10 @@ if room == room0
         with new_instance
         {
             while not place_free(x, y)
-            x = irandom(room_width)
-            y = irandom(room_height)
+            {
+                x = irandom(room_width)
+                y = irandom(room_height)
+            }
         }
         // send packet to create obstacle on remote client
         scrSendCreateObject(OBSTACLE, new_instance)
@@ -30,8 +32,10 @@ if room == room0
             with global.player_object[i]
             {
                 while not place_free(x, y)
-                x = irandom(room_width)
-                y = irandom(room_height)
+                {
+                    x = irandom(room_width)
+                    y = irandom(room_height)
+                }
             }
             // send packet to create obstacle on remote client
             scrSendCreateObject(PLAYER, global.player_object[i])

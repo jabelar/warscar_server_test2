@@ -9,7 +9,6 @@ ds_map_replace(global.socket_ip_map, added_socket_id, ip_addr_rx)
 ds_map_replace(global.ip_socket_map, ip_addr_rx, added_socket_id)
 
 show_debug_message("Network type connect received on socket = "+string(added_socket_id)+", ip address ="+ip_addr_rx)
-global.server_state = CONNECTED
 
 show_debug_message("Trying to connect player")
 // check if there is slot open for player

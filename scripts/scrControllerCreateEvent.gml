@@ -5,8 +5,6 @@ scrConstants()
 
 alarm[0] = room_speed * 3
 
-global.server_state = DISCONNECTED
-
 global.max_num_players = 4
 global.wait_for_full_lobby = false
 

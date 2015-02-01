@@ -6,7 +6,17 @@ scrConstants()
 alarm[0] = room_speed * 3
 
 global.max_num_players = 4
+global.min_num_players = 2
 global.wait_for_full_lobby = false
+global.allow_join_ingame = true
+
+// initialize player attributes
+for (var i=0; i<global.max_num_players; i++)
+{
+    global.player_score[i] = 0
+    global.player_health[i] = 100
+    global.player_ammo[i] = 10
+}
 
 // create maps
 global.client_socket_map = ds_map_create()

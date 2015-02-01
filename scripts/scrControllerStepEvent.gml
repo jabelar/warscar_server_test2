@@ -14,7 +14,7 @@ switch room
         }
         else
         {
-            if scrGetNumPlayers() >= 1
+            if scrGetNumPlayers() >= global.min_num_players
             {
                         if room != room0 then room_goto(room0)
             }

@@ -28,6 +28,8 @@
     <script>scripts\scrProcessInputNew.gml</script>
     <script>scripts\scrProcessInputPrevious.gml</script>
     <script>scripts\scrCheckCollisions.gml</script>
+    <script>scripts\scrDrawServerStatus.gml</script>
+    <script>scripts\scrDrawHUD.gml</script>
     <script>scripts\scrControllerDrawEvent.gml</script>
     <script>scripts\scrControllerRoomStartEvent.gml</script>
     <script>scripts\scrAlarm0Event.gml</script>
@@ -41,6 +43,7 @@
         <script>scripts\scrSendPlaySound.gml</script>
         <script>scripts\scrSendCreateEffect.gml</script>
         <script>scripts\scrSendCreateObject.gml</script>
+        <script>scripts\scrSendHUD.gml</script>
         <script>scripts\scrSendKickToSocket.gml</script>
         <script>scripts\scrSendObjectUpdate.gml</script>
         <script>scripts\scrSendLocalInput.gml</script>
@@ -57,9 +60,17 @@
     </scripts>
     <script>scripts\scrShowMapContents.gml</script>
     <script>scripts\scrControllerBackspace.gml</script>
+    <scripts name="Encapsulation">
+      <script>scripts\scrSetScore.gml</script>
+      <script>scripts\scrSetHealth.gml</script>
+      <script>scripts\scrDecrementHealth.gml</script>
+      <script>scripts\scrSetAmmo.gml</script>
+      <script>scripts\scrDecrementAmmo.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <object>objects\objController</object>

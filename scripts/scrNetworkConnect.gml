@@ -1,5 +1,4 @@
 /// scrNetworkConnect(ip_addr_rx, rx_buff)
-
 var ip_addr_rx = argument[0];
 var rx_buff = argument[1]
 

@@ -40,8 +40,9 @@ with global.player_object[player_id]
     if y < 0 then y = room_height
     if y > room_height then y = 0
 
-    if other.key_weapon[player_id]
+    if other.key_weapon[player_id] and global.player_ammo[player_id] > 0
     {
+        scrDecrementAmmo(player_id)
         new_instance = instance_create(x, y, objBullet)
         new_instance.speed = 32
         new_instance.direction = direction // irandom(360)

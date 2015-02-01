@@ -14,8 +14,11 @@ if room != roomLobby // already in game
     with global.player_object[open_slot] // find free random location
     {
         while not place_free(x, y)
-        x = irandom(room_width)
-        y = irandom(room_height)
+        {
+            x = irandom(room_width)
+            y = irandom(room_height)
+        }
+        image_blend = global.player_color[i]
     }
     scrSendCreateAll()
 }

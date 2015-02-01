@@ -47,7 +47,7 @@ switch room
         // process collisions
         scrCheckCollisions()
         
-        // check if any player is dead
+        // process player attributes
         for (var i=0; i<global.max_num_players; i++)
         {
             if global.player_object[i] >=0
@@ -73,7 +73,7 @@ switch room
                     scrSendObjectUpdate(global.player_object[i])
                 }
             }
-        }
+        }     
        
         // destroy bullets that go outside the room
         with objBullet

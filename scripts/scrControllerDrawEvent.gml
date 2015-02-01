@@ -8,7 +8,7 @@ switch room
     case room0:
     {
         scrDrawHUD()
-        scrDrawServerStatus()
+        // scrDrawServerStatus()
         break;
     }
 }

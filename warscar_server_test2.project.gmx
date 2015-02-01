@@ -18,24 +18,36 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scrControllerCreateEvent.gml</script>
-    <script>scripts\scrNextOpenPlayerID.gml</script>
-    <script>scripts\scrGetNumPlayers.gml</script>
-    <script>scripts\scrShowPlayerArray.gml</script>
-    <script>scripts\scrConstants.gml</script>
-    <script>scripts\scrControllerStepEvent.gml</script>
-    <script>scripts\scrClearInput.gml</script>
-    <script>scripts\scrProcessInputNew.gml</script>
-    <script>scripts\scrProcessInputPrevious.gml</script>
-    <script>scripts\scrCheckCollisions.gml</script>
-    <script>scripts\scrDrawServerStatus.gml</script>
-    <script>scripts\scrDrawHUD.gml</script>
-    <script>scripts\scrControllerDrawEvent.gml</script>
-    <script>scripts\scrControllerRoomStartEvent.gml</script>
-    <script>scripts\scrAlarm0Event.gml</script>
+    <scripts name="Event Processing">
+      <script>scripts\scrControllerCreateEvent.gml</script>
+      <script>scripts\scrControllerStepEvent.gml</script>
+      <script>scripts\scrControllerDrawEvent.gml</script>
+      <script>scripts\scrControllerRoomStartEvent.gml</script>
+      <script>scripts\scrAlarm0Event.gml</script>
+      <script>scripts\scrNetworkingEvent.gml</script>
+      <script>scripts\scrControllerBackspace.gml</script>
+    </scripts>
+    <scripts name="Utilities">
+      <script>scripts\scrConstants.gml</script>
+      <script>scripts\scrNextOpenPlayerID.gml</script>
+      <script>scripts\scrGetNumPlayers.gml</script>
+      <script>scripts\scrCheckCollisions.gml</script>
+      <script>scripts\scrGetPlayerFromInstance.gml</script>
+      <scripts name="Setters">
+        <script>scripts\scrSetScore.gml</script>
+        <script>scripts\scrIncrementScore.gml</script>
+        <script>scripts\scrSetHealth.gml</script>
+        <script>scripts\scrDecrementHealth.gml</script>
+        <script>scripts\scrSetAmmo.gml</script>
+        <script>scripts\scrDecrementAmmo.gml</script>
+      </scripts>
+      <scripts name="Debug">
+        <script>scripts\scrShowMapContents.gml</script>
+        <script>scripts\scrShowPlayerArray.gml</script>
+      </scripts>
+    </scripts>
     <scripts name="Networking">
       <script>scripts\scrInitializeNetworking.gml</script>
-      <script>scripts\scrNetworkingEvent.gml</script>
       <scripts name="Transmit Packets">
         <script>scripts\scrSendPacketToSocket.gml</script>
         <script>scripts\scrSendPacketToPlayer.gml</script>
@@ -58,17 +70,15 @@
         <script>scripts\scrReceivedDataPacket.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\scrShowMapContents.gml</script>
-    <script>scripts\scrControllerBackspace.gml</script>
-    <scripts name="Encapsulation">
-      <script>scripts\scrSetScore.gml</script>
-      <script>scripts\scrIncrementScore.gml</script>
-      <script>scripts\scrSetHealth.gml</script>
-      <script>scripts\scrDecrementHealth.gml</script>
-      <script>scripts\scrSetAmmo.gml</script>
-      <script>scripts\scrDecrementAmmo.gml</script>
+    <scripts name="Input Processing">
+      <script>scripts\scrClearInput.gml</script>
+      <script>scripts\scrProcessInputNew.gml</script>
+      <script>scripts\scrProcessInputPrevious.gml</script>
     </scripts>
-    <script>scripts\scrGetPlayerFromInstance.gml</script>
+    <scripts name="Drawing">
+      <script>scripts\scrDrawHUD.gml</script>
+      <script>scripts\scrDrawServerStatus.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

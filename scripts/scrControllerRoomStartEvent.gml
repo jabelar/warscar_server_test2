@@ -36,6 +36,7 @@ if room == room0
                     x = irandom(room_width)
                     y = irandom(room_height)
                 }
+                image_blend = choose(c_white, c_blue, c_red, c_yellow, c_olive)
             }
             // send packet to create obstacle on remote client
             scrSendCreateObject(PLAYER, global.player_object[i])

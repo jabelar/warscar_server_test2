@@ -19,4 +19,4 @@ if room != roomLobby // already in game
     }
     scrSendCreateAll()
 }
-scrShowPlayerArray() // just want to see debug output
+// scrShowPlayerArray() // just want to see debug output

@@ -46,4 +46,5 @@ if room == room0
         }
     }
 
+    scrSendHUD()
 }

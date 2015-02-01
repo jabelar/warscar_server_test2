@@ -10,6 +10,8 @@ global.min_num_players = 2
 global.wait_for_full_lobby = false
 global.allow_join_ingame = true
 
+randomize()
+
 // initialize player attributes
 for (var i=0; i<global.max_num_players; i++)
 {

@@ -18,7 +18,7 @@ if room != roomLobby // already in game
             x = irandom(room_width)
             y = irandom(room_height)
         }
-        image_blend = global.player_color[i]
+        image_blend = global.player_color[open_slot]
     }
     scrSendCreateAll()
 }

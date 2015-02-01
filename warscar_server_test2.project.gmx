@@ -62,11 +62,13 @@
     <script>scripts\scrControllerBackspace.gml</script>
     <scripts name="Encapsulation">
       <script>scripts\scrSetScore.gml</script>
+      <script>scripts\scrIncrementScore.gml</script>
       <script>scripts\scrSetHealth.gml</script>
       <script>scripts\scrDecrementHealth.gml</script>
       <script>scripts\scrSetAmmo.gml</script>
       <script>scripts\scrDecrementAmmo.gml</script>
     </scripts>
+    <script>scripts\scrGetPlayerFromInstance.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font0</font>

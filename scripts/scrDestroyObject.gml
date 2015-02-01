@@ -7,6 +7,9 @@ buffer_write(global.tx_buff_server, buffer_u8, OBJ_DESTROY)
 buffer_write(global.tx_buff_server, buffer_u32, obj_id)
 
 scrSendPacketToAll(global.tx_buff_server)
-
+with obj_id
+{
+    instance_destroy()
+}
 show_debug_message("Sending destroy object")
 

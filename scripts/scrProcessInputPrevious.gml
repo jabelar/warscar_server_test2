@@ -1,24 +1,38 @@
-// argument[0] is player constant
-// show_debug_message("Processing input for player "+string(argument[0])+" with instance id = "+string(global.player_object[argument[0]]))
+/// scrProcessInputPrevious
+var player_id = argument[0];
+
+// show_debug_message("Processing input for player "+string(player_id)+" with instance id = "+string(global.player_object[player_id]))
 
 // need to use with so that instance_place works with correct collision mask
-with global.player_object[argument[0]]
+with global.player_object[player_id]
 {
-    if other.key_down[argument[0]]
+    var dist_x = lengthdir_x(8, image_angle);
+    var dist_y = lengthdir_y(8, image_angle);
+    if other.key_down[player_id]
     {
-        if not instance_place(x, y+8, objObstacle) then y += 8
+        if not instance_place(x-dist_x/2, y-dist_y/2, objObstacle)
+        {
+            x -= dist_x/2
+            y -= dist_y/2
+        }
     }
-    if other.key_up[argument[0]]
+    if other.key_up[player_id]
     {
-        if not instance_place(x, y-8, objObstacle) then y -= 8
+        if not instance_place(x+dist_x, y+dist_y, objObstacle) 
+        {
+            x += dist_x
+            y += dist_y
+        }
     }
-    if other.key_right[argument[0]]
+    if other.key_right[player_id]
     {
-        if not instance_place(x+8, y, objObstacle) then x += 8
+        direction -= 10
+        image_angle = direction
     }
-    if other.key_left[argument[0]]
+    if other.key_left[player_id]
     {
-        if not instance_place(x-8, y, objObstacle) then x -= 8
+        direction += 10
+        image_angle = direction
     }
 
     if x < 0 then x = room_width
@@ -26,11 +40,12 @@ with global.player_object[argument[0]]
     if y < 0 then y = room_height
     if y > room_height then y = 0
 
-    if other.key_weapon[argument[0]]
+    if other.key_weapon[player_id]
     {
         new_instance = instance_create(x, y, objBullet)
         new_instance.speed = 32
-        new_instance.direction = 0 // irandom(360)
+        new_instance.direction = direction // irandom(360)
+        new_instance.image_angle = new_instance.direction
         scrSendCreateObject(BULLET, new_instance)
         audio_play_sound_at(sndMainGun, x, y, 0, room_width*1.5, room_width*2, 1, false, 100)
         scrSendPlaySound(MAIN_GUN, x, y)

@@ -10,6 +10,7 @@
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
     <sprite>sprites\sprite1</sprite>
+    <sprite>sprites\sprite5</sprite>
     <sprite>sprites\sprObstacle</sprite>
     <sprite>sprites\sprFlag</sprite>
     <sprite>sprites\sprBullet</sprite>
@@ -17,11 +18,11 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\scrControllerCreateEvent.gml</script>
     <script>scripts\scrNextOpenPlayerID.gml</script>
     <script>scripts\scrGetNumPlayers.gml</script>
     <script>scripts\scrShowPlayerArray.gml</script>
     <script>scripts\scrConstants.gml</script>
-    <script>scripts\scrControllerCreateEvent.gml</script>
     <script>scripts\scrControllerStepEvent.gml</script>
     <script>scripts\scrClearInput.gml</script>
     <script>scripts\scrProcessInputNew.gml</script>

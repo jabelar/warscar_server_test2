@@ -4,9 +4,21 @@ switch room
 {
     case roomLobby:
     {
-        global.server_state = BROADCASTING
-        global.status_string = "Broadcasting from "+global.ip_addr_server
-        
+        // check if all players have joined and start game
+        if global.wait_for_full_lobby
+        {
+            if scrGetNumPlayers() >= global.max_num_players
+            {
+                        if room != room0 then room_goto(room0)
+            }
+        }
+        else
+        {
+            if scrGetNumPlayers() >= 1
+            {
+                        if room != room0 then room_goto(room0)
+            }
+        }
         break;
     }
     case room0:
@@ -35,6 +47,12 @@ switch room
         // process collisions
         scrCheckCollisions()
         
+        // destroy bullets that go outside the room
+        with objBullet
+        {
+            if x < 0 or x > room_width or y < 0 or y > room_height then instance_destroy()
+            scrDestroyObject(id)     
+        }    
         break;
     }
 }

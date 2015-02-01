@@ -7,7 +7,8 @@ alarm[0] = room_speed * 3
 
 global.server_state = DISCONNECTED
 
-global.max_num_players = 3
+global.max_num_players = 4
+global.wait_for_full_lobby = false
 
 // create maps
 global.client_socket_map = ds_map_create()
@@ -25,5 +26,8 @@ for (var i=0; i<global.max_num_players; i++)
 }
 
 scrInitializeNetworking()
+
+gamepad_set_axis_deadzone(1, 0.2);
+gamepad_set_axis_deadzone(2, 0.2);
 
 show_debug_message("Controller create event finished")

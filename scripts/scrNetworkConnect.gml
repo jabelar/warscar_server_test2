@@ -26,12 +26,3 @@ else
     // TO DO
     // Should probably put a kick plus network destroy here?
 }
-
-// check if all players have joined and start game
-if room == roomLobby
-{
-    if scrGetNumPlayers() >= global.max_num_players
-    {
-                if room != room0 then room_goto(room0)
-    }
-}

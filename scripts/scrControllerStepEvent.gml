@@ -50,8 +50,10 @@ switch room
         // destroy bullets that go outside the room
         with objBullet
         {
-            if x < 0 or x > room_width or y < 0 or y > room_height then instance_destroy()
-            scrDestroyObject(id)     
+            if (x < 0) or (x > room_width) or (y < 0) or (y > room_height) 
+            {
+                scrDestroyObject(id)
+            }     
         }    
         break;
     }

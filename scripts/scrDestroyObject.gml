@@ -1,5 +1,7 @@
 /// scrDestroyObject(obj_id)
 var obj_id = argument[0];
+var obj_x = obj_id.x;
+var obj_y = obj_id.y;
 
 // send packet to destroy remote client objects
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)
@@ -11,5 +13,5 @@ with obj_id
 {
     instance_destroy()
 }
-show_debug_message("Sending destroy object")
+show_debug_message("Sending destroy object for object at x = "+string(obj_x)+" y = "+string(obj_y))
 

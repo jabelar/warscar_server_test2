@@ -8,12 +8,14 @@ alarm[0] = room_speed * 3
 global.server_state = DISCONNECTED
 
 global.max_num_players = 3
-// global.num_players = 0; // starts with none connected
+
+// create maps
 global.client_socket_map = ds_map_create()
 global.socket_client_map = ds_map_create()
 global.socket_ip_map = ds_map_create()
 global.ip_socket_map = ds_map_create()
 
+// initialize client maps
 for (var i=0; i<global.max_num_players; i++)
 {
     scrClearInput(i)

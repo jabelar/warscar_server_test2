@@ -1,4 +1,3 @@
-if global.socket_client >= 0 then network_destroy(global.socket_client)
 if global.socket_local_client_side >= 0 then network_destroy(global.socket_local_client_side)
 if global.socket_local_server_side >= 0 then network_destroy(global.socket_local_server_side)
 if global.socket_server >= 0 then network_destroy(global.socket_server)

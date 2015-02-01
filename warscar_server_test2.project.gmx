@@ -45,8 +45,15 @@
         <script>scripts\scrDestroyObject.gml</script>
         <script>scripts\scrSendCreateAll.gml</script>
       </scripts>
-      <script>scripts\scrClientDisconnected.gml</script>
+      <scripts name="Receive Packets">
+        <script>scripts\scrNetworkConnect.gml</script>
+        <script>scripts\scrClientDisconnected.gml</script>
+        <script>scripts\scrConnectClient.gml</script>
+        <script>scripts\scrReceivedUDPPacket.gml</script>
+        <script>scripts\scrReceivedDataPacket.gml</script>
+      </scripts>
     </scripts>
+    <script>scripts\scrShowMapContents.gml</script>
     <script>scripts\scrControllerBackspace.gml</script>
   </scripts>
   <fonts name="fonts">

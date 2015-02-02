@@ -3,7 +3,7 @@
 
 // send packet to destroy remote client objects
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)
-buffer_write(global.tx_buff_server, buffer_u8, KICK)
+buffer_write(global.tx_buff_server, buffer_u8, NF_KICK)
 
 scrSendPacketToSocket(global.tx_buff_server, argument[0])
 

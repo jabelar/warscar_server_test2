@@ -6,7 +6,7 @@ var effect_size = argument[3]
 var effect_color = argument[4]
 
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)
-buffer_write(global.tx_buff_server, buffer_u8, EFFECT_CREATE)
+buffer_write(global.tx_buff_server, buffer_u8, NF_EFFECT_CREATE)
 buffer_write(global.tx_buff_server, buffer_u32, effect_type)
 buffer_write(global.tx_buff_server, buffer_u32, effect_x)
 buffer_write(global.tx_buff_server, buffer_u32, effect_y)

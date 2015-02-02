@@ -3,7 +3,7 @@ var obj_type = argument[0];
 var inst_id = argument[1];
 
 buffer_seek(global.tx_buff_server, buffer_seek_start, 0)
-buffer_write(global.tx_buff_server, buffer_u8, OBJ_CREATE)
+buffer_write(global.tx_buff_server, buffer_u8, NF_OBJ_CREATE)
 buffer_write(global.tx_buff_server, buffer_u8, obj_type)
 buffer_write(global.tx_buff_server, buffer_u32, inst_id.id)
 buffer_write(global.tx_buff_server, buffer_s32, inst_id.x)

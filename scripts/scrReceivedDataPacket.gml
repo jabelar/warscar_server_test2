@@ -12,7 +12,7 @@ if not is_undefined(player_id)
 {
     switch packet_type
     {
-        case INPUT:
+        case NF_INPUT:
         {
             // show_debug_message("Remote input packet received")
             key_up[player_id] = buffer_read(rx_buff, buffer_bool)

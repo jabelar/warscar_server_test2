@@ -5,13 +5,13 @@ var ip_addr_rx = argument[1];
 var packet_type = buffer_read(rx_buff, buffer_u8);
 switch packet_type
 {
-    case SERVER_ANNOUNCE:
+    case NF_SERVER_ANNOUNCE:
     {
         global.my_ip_address = ip_addr_rx
         // show_debug_message("My IP address = "+global.my_ip_address+", my server name = "+buffer_read(rx_buff, buffer_string))
         break;
     }
-    case CLIENT_ANNOUNCE:
+    case NF_CLIENT_ANNOUNCE:
     {
         show_debug_message("There is  client at "+ip_addr_rx)
         
@@ -27,4 +27,3 @@ switch packet_type
         break;
     }
 }
-

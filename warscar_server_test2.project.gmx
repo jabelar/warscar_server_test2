@@ -46,7 +46,13 @@
       </scripts>
     </scripts>
     <scripts name="Networking">
-      <script>scripts\scrInitializeNetworking.gml</script>
+      <scripts name="Network Initialization">
+        <script>scripts\scrInitializeNetworking.gml</script>
+        <script>scripts\scrInitializeSockets.gml</script>
+        <script>scripts\scrInitializeBuffers.gml</script>
+        <script>scripts\scrInitializeMaps.gml</script>
+        <script>scripts\scrInitializeNetworkGameVariables.gml</script>
+      </scripts>
       <scripts name="Transmit Packets">
         <script>scripts\scrSendPacketToSocket.gml</script>
         <script>scripts\scrSendPacketToPlayer.gml</script>
@@ -69,9 +75,6 @@
         <script>scripts\scrReceivedUDPPacket.gml</script>
         <script>scripts\scrReceivedDataPacket.gml</script>
       </scripts>
-      <script>scripts\scrInitializeSockets.gml</script>
-      <script>scripts\scrInitializeBuffers.gml</script>
-      <script>scripts\scrInitializeMaps.gml</script>
     </scripts>
     <scripts name="Input Processing">
       <script>scripts\scrClearInput.gml</script>

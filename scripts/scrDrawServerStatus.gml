@@ -15,4 +15,3 @@ for (var i=1; i<global.max_num_players; i++)
         draw_text(room_width/2, room_height/2+50*(i+1), "Remote client disconnected")
     }
 }    
-

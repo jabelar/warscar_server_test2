@@ -4,4 +4,3 @@ var value = argument[1];
 
 global.player_ammo[player_id]=value
 scrSendHUD()
-

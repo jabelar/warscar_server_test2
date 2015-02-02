@@ -4,4 +4,3 @@ var value = argument[1];
 
 global.player_health[player_id]=value
 scrSendHUD()
-

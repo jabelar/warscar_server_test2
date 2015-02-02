@@ -20,4 +20,3 @@ else
 {
     show_debug_message("Trying to send packet to player that doesn't exist")
 }
-

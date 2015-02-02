@@ -16,4 +16,3 @@ for (var i=0; i<global.max_num_players; i++)
         // draw_text(10, 10+50*i, "P"+string(i+1)+" not connected")
     }
 }    
-

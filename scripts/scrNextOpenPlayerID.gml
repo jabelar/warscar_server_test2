@@ -10,4 +10,3 @@ for (i=0; i<global.max_num_players; i+=1)
 }
 show_debug_message("Slot not available for player connection")
 return -1;
-

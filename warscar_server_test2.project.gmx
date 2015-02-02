@@ -27,11 +27,15 @@
       <script>scripts\scrControllerBackspace.gml</script>
     </scripts>
     <scripts name="Utilities">
-      <script>scripts\scrConstants.gml</script>
       <script>scripts\scrNextOpenPlayerID.gml</script>
       <script>scripts\scrGetNumPlayers.gml</script>
       <script>scripts\scrCheckCollisions.gml</script>
       <script>scripts\scrGetPlayerFromInstance.gml</script>
+      <scripts name="Initialization">
+        <script>scripts\scrConstants.gml</script>
+        <script>scripts\scrNetworkingConstants.gml</script>
+        <script>scripts\scrGameConstants.gml</script>
+      </scripts>
       <scripts name="Setters">
         <script>scripts\scrSetScore.gml</script>
         <script>scripts\scrIncrementScore.gml</script>

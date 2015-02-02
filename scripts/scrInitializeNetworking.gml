@@ -35,8 +35,6 @@ else
 }
 
 // Create socket for local client
-global.ip_addr_server = "127.0.0.1" // on server the server is local
-
 global.socket_local_client_side = network_create_socket(network_socket_tcp)
 if global.socket_local_client_side < 0
 {
@@ -49,6 +47,7 @@ else
 
 // connect socket from local client to server
 // socket will be assigned in the network event
+global.ip_addr_server = "127.0.0.1" // on server the server is local
 global.socket_local_server_side = -1
 var result = network_connect(global.socket_local_client_side, global.ip_addr_server, 6511);
 if result < 0
